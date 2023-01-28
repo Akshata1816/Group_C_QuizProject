@@ -1,5 +1,4 @@
 package com.velocity;
-<<<<<<< HEAD
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -23,8 +22,8 @@ public class Quiz {
 		Scanner sc = new Scanner(System.in);
         
 		try {
-			DatabaseConnection connectionProvider = new DatabaseConnection();
-			connection = connectionProvider.getConnection();
+			GetConnection connectionProvider = new GetConnection();
+			connection = connectionProvider.connection();
 	
 			Statement st1 = connection.createStatement();
 			
@@ -112,7 +111,3 @@ public class Quiz {
 		
 	}
 }
-=======
-import java.util.Scanner;
-public class Quiz {
->>>>>>> eb025a30ec4917ca183e5ab6b2e1e152552978a3
