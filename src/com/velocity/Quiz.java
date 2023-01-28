@@ -108,6 +108,30 @@ public class Quiz {
 	}
 	public void viewRank()
 	{
-		
+		try {
+		GetConnection connectionProvider = new GetConnection();
+			connection = connectionProvider.connection();
+			
+			ps = connection.prepareStatement("select * from student order by Score desc");
+			ResultSet rs = ps.executeQuery();
+			
+			System.out.println("Id      Name       Address      Score      Grade");
+			
+			while (rs.next()) {
+				System.out.println(rs.getInt(1)+"     "+rs.getString(2)+"       "+rs.getString(3)+"        "+rs.getInt(4)+"            "+rs.getString(5));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				connection.close();
+				ps.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
 	}
 }
