@@ -171,6 +171,44 @@ public class Quiz {
 	}
 	public void addNewStudent()
 	{
-		
+try {
+			
+			GetConnection connectionProvider = new GetConnection();
+			connection = connectionProvider.connection();
+
+			Scanner sc = new Scanner(System.in);
+			System.out.println("Enter Your First Name : ");
+			String name = sc.next();
+			System.out.println("\nEnter Your Address : ");
+			String address = sc.next();
+			
+			ps = connection.prepareStatement("insert into student(FirstName, Address) values (?,?)");
+			ps.setString(1, name);
+			ps.setString(2, address);
+			ps.executeUpdate();
+			System.out.println("Record Inserted Successfully...!!!");
+			
+			//Display registration number
+			ps1 = connection.prepareStatement("select Id from student order by Id desc limit 1");
+			ResultSet rs = ps1.executeQuery();
+			
+			while (rs.next()) {
+				System.out.println("Your Registration Id is : " +rs.getInt(1));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				connection.close();
+				ps.close();
+				ps1.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
+	
 	}
 }
