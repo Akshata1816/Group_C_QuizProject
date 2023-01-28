@@ -47,7 +47,7 @@ public class MainOutput {
 				System.out.println("Invalid Choice...!!!");
 			}
 		} while (choice!=5);
-	
+	sc.close();
 	}
 
 }
