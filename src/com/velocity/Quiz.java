@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Scanner;
+import java.util.TimerTask;
+import java.util.concurrent.TimeUnit;
 
 public class Quiz {
 
@@ -17,6 +19,7 @@ public class Quiz {
 	String Grade;
 	int score = 0;
 	
+
 	public void getQuiz()
 	{
 		Scanner sc = new Scanner(System.in);
@@ -104,7 +107,38 @@ public class Quiz {
 
 	public void viewScore()
 	{
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter your Id : ");
+		int id = sc.nextInt();
 		
+		try {
+			GetConnection connectionProvider = new GetConnection();
+			connection = connectionProvider.connection();
+			
+			ps = connection.prepareStatement("select * from student where Id = " +id);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			if (rs.next()) {
+				System.out.println("Id      Name       Address      Score      Grade");
+				System.out.println(rs.getInt(1)+"     "+rs.getString(2)+"       "+rs.getString(3)+"        "+rs.getInt(4)+"            "+rs.getString(5));	
+			}
+			else
+			{
+				System.out.println("Sorry Id is not available...!!!");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				connection.close();
+				ps.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	public void viewRank()
 	{
