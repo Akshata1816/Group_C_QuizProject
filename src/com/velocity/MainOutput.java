@@ -27,7 +27,7 @@ public class MainOutput {
 			
 			switch (choice) {
 			case 1:
-				//quiz.addNewStudent();
+				quiz.addNewStudent();
 				break;
 			case 2:
 				quiz.getQuiz();
