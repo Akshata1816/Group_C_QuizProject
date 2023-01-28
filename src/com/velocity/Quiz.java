@@ -1,4 +1,5 @@
 package com.velocity;
+<<<<<<< HEAD
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -111,3 +112,7 @@ public class Quiz {
 		
 	}
 }
+=======
+import java.util.Scanner;
+public class Quiz {
+>>>>>>> eb025a30ec4917ca183e5ab6b2e1e152552978a3
