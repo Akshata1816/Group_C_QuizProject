@@ -96,8 +96,6 @@ public class Quiz {
 			try {
 					connection.close();
 					ps.close();
-					ps1.close();
-					sc.close();
 			} catch (Exception e) {
 					e.printStackTrace();
 			}
